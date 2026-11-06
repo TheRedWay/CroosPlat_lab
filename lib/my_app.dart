@@ -9,7 +9,7 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Название приложения',
+      title: 'Арнеда котиков',
       theme: AppTheme.lightTheme,
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,

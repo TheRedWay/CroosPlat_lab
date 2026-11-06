@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/content_card.dart';
+import 'cat.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,22 +14,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar(title: const Text('Аренда котиков')),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Header',
+              'Выберите котика',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             ListView.separated(
               primary: false,
               shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (_, _) => ContentCard(),
+              itemCount: cats.length,
+              itemBuilder: (_, index) => ContentCard(cat: cats[index]),
               separatorBuilder: (_, _) => const SizedBox(height: 16),
             ),
           ],
