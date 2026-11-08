@@ -8,34 +8,46 @@ class CatDetailScreen extends StatelessWidget {
   final Cat cat;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+    (
       appBar: AppBar(title: Text(cat.name)),
-      body: SingleChildScrollView(
+
+      body: SingleChildScrollView
+      (
+
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ConstrainedBox(
+        child: Column
+        (
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: 
+          [
+            ConstrainedBox
+            (
               constraints: const BoxConstraints(maxWidth: 560),
-              child: ClipRRect(
+              child: ClipRRect
+              (
                 borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
+                child: Image.asset
+                (
                   cat.imagePath,
                   width: double.infinity,
                   fit: BoxFit.contain,
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            SizedBox(
+            const SizedBox(height: 20), // отступ 20
+            SizedBox
+            (
               width: double.infinity,
-              child: Text(
+              child: Text
+              (
                 cat.name,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16), // отступ 16
             _DetailRow(label: 'Порода', value: cat.breed),
             _DetailRow(label: 'Пол', value: cat.gender),
             _DetailRow(label: 'Возраст', value: cat.age),
@@ -50,23 +62,32 @@ class CatDetailScreen extends StatelessWidget {
   }
 }
 
-class _DetailRow extends StatelessWidget {
+class _DetailRow extends StatelessWidget 
+{
   const _DetailRow({required this.label, required this.value});
 
   final String label;
   final String value;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(BuildContext context) 
+  {
+    return Padding
+    (
+
       padding: const EdgeInsets.only(bottom: 12),
-      child: SizedBox(
+      child: SizedBox
+      (
         width: double.infinity,
-        child: Text.rich(
-          TextSpan(
+        child: Text.rich
+        (
+          TextSpan
+          (
             style: Theme.of(context).textTheme.bodyLarge,
-            children: [
-              TextSpan(
+            children: 
+            [
+              TextSpan
+              (
                 text: '$label: ',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
