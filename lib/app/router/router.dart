@@ -22,12 +22,12 @@ final router = GoRouter(
     GoRoute(
       path: '/cats/:id',
       pageBuilder: (_, state) {
-        final cat = findCatById(state.pathParameters['id']);
+        final cat = state.extra;
         return MaterialPage(
           key: state.pageKey,
-          child: cat == null
-              ? const Scaffold(body: Center(child: Text('Котик не найден')))
-              : CatDetailScreen(cat: cat),
+          child: cat is Cat
+              ? CatDetailScreen(cat: cat)
+              : const Scaffold(body: Center(child: Text('Котик не найден'))),
         );
       },
     ),

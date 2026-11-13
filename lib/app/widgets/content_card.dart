@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../features/home/cat.dart';
+import 'package:lab/app/features/Home/cat.dart';
 
 class ContentCard extends StatelessWidget {
   const ContentCard({required this.cat, super.key});
@@ -11,9 +10,8 @@ class ContentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageSize = 100.0;
-
     return InkWell(
-      onTap: () => context.push('/cats/${cat.id}'),
+      onTap: () => context.push('/cats/${cat.id}', extra: cat),
       borderRadius: BorderRadius.circular(16),
       child: SizedBox(
         height: imageSize,
@@ -23,11 +21,12 @@ class ContentCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                cat.imagePath,
+              child: Image.network(
+                cat.imageUrl,
                 height: imageSize,
                 width: imageSize,
                 fit: BoxFit.cover,
+                errorBuilder: (_, _, _) => const Icon(Icons.broken_image),
               ),
             ),
             Expanded(
@@ -36,15 +35,15 @@ class ContentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    cat.name,
+                    cat.breed.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Expanded(
                     child: Text(
-                      cat.listingDescription,
-                      maxLines: 3,
+                      cat.breed.temperament,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
