@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lab/app/features/Home/cat.dart';
+import 'package:lab/app/features/Home/cat_detail_screen.dart';
+import 'package:lab/app/features/Home/home_screen.dart';
 import 'package:lab/di/di.dart';
-
-import '../app.dart';
 
 import 'package:talker_flutter/talker_flutter.dart';
 

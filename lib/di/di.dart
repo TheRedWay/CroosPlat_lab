@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:lab/app/features/Home/bloc/cat_detail_bloc.dart';
 import 'package:lab/app/features/Home/bloc/home_bloc.dart';
+import 'package:lab/app/features/Home/data/cat_detail_repository.dart';
+import 'package:lab/app/features/Home/data/cat_detail_repository_interface.dart';
 import 'package:lab/app/features/Home/data/cat_repository.dart';
 import 'package:lab/app/features/Home/data/cat_repository_interface.dart';
 import 'package:lab/data/dio/set_up.dart';
@@ -20,7 +23,13 @@ Future<void> setupLocator() async {
   getIt.registerLazySingleton<CatRepositoryInterface>(
     () => CatRepository(dio: getIt<Dio>()),
   );
+  getIt.registerLazySingleton<CatDetailRepositoryInterface>(
+    () => CatDetailRepository(dio: getIt<Dio>()),
+  );
   getIt.registerFactory<HomeBloc>(
     () => HomeBloc(catRepository: getIt<CatRepositoryInterface>()),
+  );
+  getIt.registerFactory<CatDetailBloc>(
+    () => CatDetailBloc(repository: getIt<CatDetailRepositoryInterface>()),
   );
 }
